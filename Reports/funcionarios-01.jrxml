@@ -89,13 +89,13 @@ from funcionarios f, empresas e]]>
 			</textField>
 			<textField>
 				<reportElement x="143" y="0" width="143" height="30" uuid="610dd136-6330-4aac-af30-0c3fb6dd9e17"/>
-				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{cnpj}]]></textFieldExpression>
+				<textElement verticalAlignment="Middle" markup="html"/>
+				<textFieldExpression><![CDATA["<b>CNPJ:</b> " + $F{cnpj}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="286" y="0" width="143" height="30" uuid="2f7161a5-064b-4060-ab02-e72845a4d851"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{telefone}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["(" + $F{telefone}.substring( 0, 2 ) + ")" + " " + $F{telefone}.substring( 2, 6 ) + " - " + $F{telefone}.substring( 6, 10 ) ]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="429" y="0" width="143" height="30" uuid="727fd0f6-4c0c-4d47-84fb-d6ab1de0d978"/>
@@ -179,7 +179,7 @@ from funcionarios f, empresas e]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nome}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="dd/MM/yyyy">
 				<reportElement style="style_colors_alternating" x="286" y="0" width="143" height="30" uuid="edc8533a-5665-4736-932a-467ed4d915fe">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="ab77e84c-95ef-44c9-bd5f-256b58a1ab3d"/>
 				</reportElement>
@@ -195,7 +195,7 @@ from funcionarios f, empresas e]]>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{data_nascimento}]]></textFieldExpression>
 			</textField>
-			<textField>
+			<textField pattern="¤ #,##0.00;¤ -#,##0.00">
 				<reportElement style="style_colors_alternating" x="429" y="0" width="143" height="30" uuid="d39f9617-80bd-4790-8bf4-1f3e3157f600">
 					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e656f3cd-7b02-410f-94e3-35f2314f5c91"/>
 				</reportElement>
