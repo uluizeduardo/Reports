@@ -74,6 +74,12 @@ from funcionarios f, empresas e]]>
 	<variable name="SALARY_AVERAGE_GENERAL" class="java.math.BigDecimal" calculation="Average">
 		<variableExpression><![CDATA[$F{salario}]]></variableExpression>
 	</variable>
+	<variable name="MAX_SALARY" class="java.math.BigDecimal" resetType="Page" calculation="Highest">
+		<variableExpression><![CDATA[$F{salario}]]></variableExpression>
+	</variable>
+	<variable name="MIN_SALARY" class="java.math.BigDecimal" resetType="Page" calculation="Lowest">
+		<variableExpression><![CDATA[$F{salario}]]></variableExpression>
+	</variable>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -107,7 +113,7 @@ from funcionarios f, empresas e]]>
 			<textField>
 				<reportElement x="286" y="0" width="143" height="30" uuid="2f7161a5-064b-4060-ab02-e72845a4d851"/>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA["(" + $F{telefone}.substring( 0, 2 ) + ")" + " " + $F{telefone}.substring( 2, 6 ) + " - " + $F{telefone}.substring( 6, 10 ) ]]></textFieldExpression>
+				<textFieldExpression><![CDATA["(" + $F{telefone}.substring( 0, 2 ) + ")" + " " + $F{telefone}.substring( 2, 6 ) + " - " + $F{telefone}.substring( 6, 10 )]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="429" y="0" width="143" height="30" uuid="727fd0f6-4c0c-4d47-84fb-d6ab1de0d978"/>
@@ -291,6 +297,39 @@ from funcionarios f, empresas e]]>
 			</textField>
 		</band>
 	</pageFooter>
+	<lastPageFooter>
+		<band height="30">
+			<rectangle>
+				<reportElement x="0" y="0" width="572" height="30" backcolor="#FFFFCC" uuid="25233574-208d-438e-b94a-c819aa1488aa"/>
+			</rectangle>
+			<textField pattern="¤ #,##0.00;¤ -#,##0.00">
+				<reportElement x="180" y="0" width="100" height="30" uuid="f98f0376-b6be-4759-8fb5-3ec7c4d194c1"/>
+				<box padding="3"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{MAX_SALARY}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="80" y="0" width="100" height="30" uuid="c7c6e203-3f7a-409a-83af-4413910adfbe"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Maior Salário: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="380" y="0" width="100" height="30" uuid="c46625c9-068d-48e3-8b18-dca2fc858b9d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Menor Salário: ]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00;¤ -#,##0.00">
+				<reportElement x="480" y="0" width="100" height="30" uuid="d7a7d346-5b54-4e79-812c-e2743e708a25"/>
+				<box padding="3"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{MIN_SALARY}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
 	<summary>
 		<band height="65" splitType="Stretch">
 			<rectangle>
